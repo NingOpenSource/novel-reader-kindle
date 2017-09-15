@@ -115,36 +115,12 @@ function touchInit(canvas, onClickTop, onClickBottom, onClickLeft, onClickRight,
 		}
 	}
 	var tempArea;
-	canvas.addEventListener("mousedown", function(e) {
-		tempArea = loadArea(e.clientX, e.clientY);
-		draw(tempArea, true);
-	});
-	canvas.addEventListener("mouseup", function(e) {
-		alert("ss")
-		draw(tempArea, false);
-		if(tempArea == areas.center) {
-			console.log("click center area")
-		} else
-		if(tempArea == areas.left) {
-			console.log("click left area")
-		} else
-		if(tempArea == areas.right) {
-			console.log("click right area")
-		} else
-		if(tempArea == areas.top) {
-			console.log("click top area")
-		} else
-		if(tempArea == areas.bottom) {
-			console.log("click bottom area")
-		}
-	});
-//	canvas.addEventListener("touchstart", function(e) {
-//		tempArea = loadArea(e.touches[0].clientX, e.touches[0].clientY);
+//	canvas.addEventListener("mousedown", function(e) {
+//		tempArea = loadArea(e.clientX, e.clientY);
 //		draw(tempArea, true);
 //	});
-//	canvas.addEventListener("touchmove", function(e) {
-//	});
-//	canvas.addEventListener("touchend", function(e) {
+//	canvas.addEventListener("mouseup", function(e) {
+//		alert("ss")
 //		draw(tempArea, false);
 //		if(tempArea == areas.center) {
 //			console.log("click center area")
@@ -162,6 +138,31 @@ function touchInit(canvas, onClickTop, onClickBottom, onClickLeft, onClickRight,
 //			console.log("click bottom area")
 //		}
 //	});
+	canvas.addEventListener("touchstart", function(e) {
+		alert("touch is starting")
+		tempArea = loadArea(e.touches[0].clientX, e.touches[0].clientY);
+		draw(tempArea, true);
+	});
+	canvas.addEventListener("touchmove", function(e) {
+	});
+	canvas.addEventListener("touchend", function(e) {
+		draw(tempArea, false);
+		if(tempArea == areas.center) {
+			console.log("click center area")
+		} else
+		if(tempArea == areas.left) {
+			console.log("click left area")
+		} else
+		if(tempArea == areas.right) {
+			console.log("click right area")
+		} else
+		if(tempArea == areas.top) {
+			console.log("click top area")
+		} else
+		if(tempArea == areas.bottom) {
+			console.log("click bottom area")
+		}
+	});
 	draw(areas.top, false);
 	draw(areas.bottom, false);
 	draw(areas.left, false);
