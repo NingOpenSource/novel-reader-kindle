@@ -120,6 +120,7 @@ function touchInit(canvas, onClickTop, onClickBottom, onClickLeft, onClickRight,
 		draw(tempArea, true);
 	});
 	canvas.addEventListener("mouseup", function(e) {
+		alert("ss")
 		draw(tempArea, false);
 		if(tempArea == areas.center) {
 			console.log("click center area")
