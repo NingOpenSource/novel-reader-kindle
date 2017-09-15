@@ -115,13 +115,19 @@ function touchInit(canvas, onClickTop, onClickBottom, onClickLeft, onClickRight,
 		}
 	}
 	var tempArea;
-	canvas.addEventListener("mousedown", function(e) {
-		alert("ss")
+//	canvas.addEventListener("mousedown", function(e) {
+//		tempArea = loadArea(e.clientX, e.clientY);
+//		draw(tempArea, true);
+//	});
+//	canvas.addEventListener("mouseup", function(e) {
+//		draw(tempArea, false);
+//	});
+	canvas.addEventListener("click", function(e) {
 		tempArea = loadArea(e.clientX, e.clientY);
 		draw(tempArea, true);
-	});
-	canvas.addEventListener("mouseup", function(e) {
-		draw(tempArea, false);
+		setTimeout(function(){
+			draw(tempArea, false);
+		},300);
 		if(tempArea == areas.center) {
 			console.log("click center area")
 		} else
