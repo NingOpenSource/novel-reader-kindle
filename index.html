@@ -1,26 +1,39 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"/>
-		<meta name="theme-color" content="#000000"/>
-		<link rel="manifest" href="/manifest.json"/>
-		<link rel="shortcut icon" href="/favicon.ico">
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<meta name="theme-color" content="#000000" />
+		<link rel="manifest" href="./manifest.json" />
+		<link rel="shortcut icon" href="./favicon.ico">
 		<title>a novel reader for kindle</title>
 		<style>
-			
+
 		</style>
 	</head>
-		
-	<body">
+	<div>
+		<div style="height:300px;display: flex;flex-direction: column;">
+			<div style="background: #000000;width: 20px;height: 20px;flex: 1;"></div>
+			<div style="background: #555555;width: 20px;height: 20px;flex: 1;"></div>
+			<div style="background: #aaaaaa;width: 20px;height: 20px;flex: 1;"></div>
+		</div>
+	</div>
 
+	<body>
 
-<script>
-	var _theme={
-		backgroundColor:"lightGray"
-	};
-	document.body.backgroundColor=_theme.backgroundColor;
-</script>
+		<script>
+			var _theme = {
+				backgroundColor: "lightGray"
+			};
+
+			function onCreate() {
+				document.body.style.backgroundColor = _theme.backgroundColor;
+				document.body.style.height = (document.documentElement.clientHeight) + "px";
+				document.body.style.margin = "0px";
+			}
+			onCreate();
+		</script>
 	</body>
 
 </html>
