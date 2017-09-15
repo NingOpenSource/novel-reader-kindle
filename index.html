@@ -8,6 +8,7 @@
 		<link rel="manifest" href="./manifest.json" />
 		<link rel="shortcut icon" href="./favicon.ico">
 		<title>a novel reader for kindle</title>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<style>
 
 		</style>
@@ -33,6 +34,13 @@
 				document.body.style.margin = "0px";
 			}
 			onCreate();
+			axios.get('http://novel.juhe.im/categories')
+				.then(function(response) {
+					alert(response);
+				})
+				.catch(function(error) {
+					alert(error);
+				});
 		</script>
 	</body>
 
