@@ -115,19 +115,14 @@ function touchInit(canvas, onClickTop, onClickBottom, onClickLeft, onClickRight,
 		}
 	}
 	var tempArea;
-//	canvas.addEventListener("mousedown", function(e) {
-//		tempArea = loadArea(e.clientX, e.clientY);
-//		draw(tempArea, true);
-//	});
-//	canvas.addEventListener("mouseup", function(e) {
-//		draw(tempArea, false);
-//	});
-	canvas.addEventListener("click", function(e) {
+	canvas.addEventListener("mousedown", function(e) {
 		tempArea = loadArea(e.clientX, e.clientY);
 		draw(tempArea, true);
+	});
+	canvas.addEventListener("mouseup", function(e) {
 		setTimeout(function(){
 			draw(tempArea, false);
-		},60);
+		},16);
 		if(tempArea == areas.center) {
 			console.log("click center area")
 		} else
@@ -144,6 +139,28 @@ function touchInit(canvas, onClickTop, onClickBottom, onClickLeft, onClickRight,
 			console.log("click bottom area")
 		}
 	});
+//	canvas.addEventListener("click", function(e) {
+//		tempArea = loadArea(e.clientX, e.clientY);
+//		draw(tempArea, true);
+//		setTimeout(function(){
+//			draw(tempArea, false);
+//		},16);
+//		if(tempArea == areas.center) {
+//			console.log("click center area")
+//		} else
+//		if(tempArea == areas.left) {
+//			console.log("click left area")
+//		} else
+//		if(tempArea == areas.right) {
+//			console.log("click right area")
+//		} else
+//		if(tempArea == areas.top) {
+//			console.log("click top area")
+//		} else
+//		if(tempArea == areas.bottom) {
+//			console.log("click bottom area")
+//		}
+//	});
 //	canvas.addEventListener("touchstart", function(e) {
 //		alert("touch is starting")
 //		tempArea = loadArea(e.touches[0].clientX, e.touches[0].clientY);
