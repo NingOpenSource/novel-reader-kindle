@@ -127,7 +127,7 @@ function touchInit(canvas, onClickTop, onClickBottom, onClickLeft, onClickRight,
 		draw(tempArea, true);
 		setTimeout(function(){
 			draw(tempArea, false);
-		},300);
+		},60);
 		if(tempArea == areas.center) {
 			console.log("click center area")
 		} else
