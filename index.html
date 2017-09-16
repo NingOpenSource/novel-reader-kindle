@@ -20,9 +20,9 @@
 			}
 			
 			.toolbar {
-				width: 36px;
 				height: 100%;
-				background-color: lightcyan;
+				max-width: 3rem;
+				background-color: lightgray;
 				/*position: fixed;*/
 				/*float: left;*/
 				border-right-color: gray;
@@ -53,12 +53,31 @@
 				border-top-width: 1px;
 				border-top-style: solid;
 			}
+			.bt_icon{
+				width: 2rem;
+				height: 2rem;
+				padding: 0.5rem;
+				background: lightgray;
+			}
+			.bt_icon:active{
+				width: 2rem;
+				height: 2rem;
+				padding: 0.5rem;
+				background: gray;
+			}
 		</style>
 	</head>
 
 	<body>
 		<div style="height: 100%;">
-			<div class="toolbar"></div>
+			<div class="toolbar">
+				<img onclick="console.log('saas')" class="bt_icon" src="img/bt_bookcase.png" />
+				<img onclick="console.log('saas')" class="bt_icon" src="img/bt_home.png" />
+				<img onclick="console.log('saas')" class="bt_icon" src="img/bt_rank.png" />
+				<img onclick="console.log('saas')" class="bt_icon" src="img/bt_categories.png" />
+				<img onclick="console.log('saas')" class="bt_icon" src="img/bt_search.png" />
+				<img onclick="console.log('saas')" class="bt_icon" src="img/bt_setting.png" />
+			</div>
 			<div>
 				<div id="contentLayout" class="contentLayout"><span class="textAutoWrap">button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button </span></div>
 				<div id="pagerBar" class="pagerBar"><span>button 页数分页器</span></div>
