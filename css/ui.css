@@ -63,9 +63,8 @@ body {
 .searchBar{
 	width: 100%;
 	overflow: hidden;
-	border-radius: 0;
-	border-color: gray;
-	border-width: 1px;
+	border-bottom-color: gray;
+	border-bottom-width: 1px;
 	border-bottom-style: solid;
 	background: #fefefefe;
 }
@@ -86,4 +85,7 @@ body {
 	line-height: 2.5rem;
 	text-align: center;
 	background-color: lightgray;
+}
+.searchButton:active {
+	background-color: white;
 }
