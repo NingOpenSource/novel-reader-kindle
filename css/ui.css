@@ -32,6 +32,7 @@ body {
 	margin: 10px;
 }
 
+input,input:focus,input:active{user-select: text;}
 .pagerBar {
 	background-color: lightgray;
 	/*position: fixed;*/
