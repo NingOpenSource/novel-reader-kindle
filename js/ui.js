@@ -5,6 +5,7 @@ var ui = {
 	 * @param {Element} eleContentLayout
 	 */
 	initNavBar: function(eleNavNar, eleContentLayout) {
+		eleNavNar.style.height=document.documentElement.clientHeight+"px";
 		eleNavNar.innerHTML = "";
 		var tempNavPage = null;
 		var togglePageController = function(navPage) {
