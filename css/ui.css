@@ -1,0 +1,60 @@
+html,body {
+				margin: 0;
+				padding: 0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			
+			.toolbar {
+				height: 100%;
+				max-width: 4rem;
+				background-color: lightgray;
+				/*position: fixed;*/
+				/*float: left;*/
+				border-right-color: gray;
+				border-right-width: 1px;
+				border-right-style: solid;
+				float: left;
+			}
+			
+			.contentLayout {
+				background-color: white;
+				/*position: fixed;*/
+				overflow-wrap: break-word;
+				word-break: break-all;
+				word-wrap: break-word;
+				overflow-y: hidden;
+			}
+			
+			.textAutoWrap {
+				margin: 10px;
+			}
+			
+			.pagerBar {
+				background-color: lightgray;
+				/*position: fixed;*/
+				/*float: right;*/
+				min-height: 3rem;
+				line-height: 3rem;
+				text-align: right;
+				font-size: 1.2rem;
+				border-top-color: gray;
+				border-top-width: 1px;
+				border-top-style: solid;
+			}
+			
+			.bt_icon {
+				width: 2rem;
+				height: 2rem;
+				padding: 1rem;
+				background: lightgray;
+			}
+			
+			.bt_icon:active {
+				background: white;
+			}
+			
+			.bt_icon_selected {
+				background: white;
+			}

@@ -110,7 +110,6 @@ var navPages = [
 	})),
 	new NavPage("分类", "img/bt_categories.png", new NavPageAdapter({
 		onCreate: function(adapter) {
-
 		},
 		onResume: function(adapter) {
 
@@ -125,10 +124,14 @@ var navPages = [
 	})),
 	new NavPage("搜索", "img/bt_search.png", new NavPageAdapter({
 		onCreate: function(adapter) {
-
+			adapter.contentLayout=$('<div id="contentLayout" class="contentLayout"><span class="textAutoWrap"></span></div>')[0];
+			adapter.pageBarLayout=$('<div id="pagerBarLayout" class="pagerBar"><div><a href="#" style="padding-left:1rem;padding-right:1rem;">上一页</a><span>1/1</span><a href="#" style="padding-left:1rem;padding-right:1rem;">下一页</a></div></div>')[0];
+			adapter.render.appendChild(adapter.contentLayout);
+			adapter.render.appendChild(adapter.pageBarLayout);		
 		},
 		onResume: function(adapter) {
-
+			console.log(adapter.pageBarLayout.offsetHeight)
+			adapter.contentLayout.style.height = (document.documentElement.clientHeight - adapter.pageBarLayout.offsetHeight) + "px";
 		},
 		onPause: function(adapter) {
 
