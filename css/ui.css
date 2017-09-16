@@ -4,6 +4,8 @@ body {
 	padding: 0;
 	width: 100%;
 	overflow: hidden;
+	overflow-x: hidden;
+	
 }
 
 .toolbar {
@@ -12,7 +14,7 @@ body {
 	/*position: fixed;*/
 	/*float: left;*/
 	border-right-color: gray;
-	border-right-width: 0px;
+	border-right-width: 1px;
 	border-right-style: solid;
 	float: left;
 }
@@ -30,7 +32,7 @@ body {
 	margin: 10px;
 }
 
-input,input:focus,input:active{user-select: text;}
+
 .pagerBar {
 	background-color: lightgray;
 	/*position: fixed;*/
@@ -59,7 +61,7 @@ input,input:focus,input:active{user-select: text;}
 	background: white;
 }
 
-.searchBar {
+.searchInputText {
 	display: inline-block;
 	border-radius: 0;
 	border-bottom-style: none;
