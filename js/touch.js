@@ -1,4 +1,14 @@
-function touchInit(canvas, onClickTop, onClickBottom, onClickLeft, onClickRight, onClickCenter) {
+/**
+ * 
+ * @param {Object} canvas
+ * @param {Object} isReadingMode 是否为显示模式
+ * @param {Object} onClickTop
+ * @param {Object} onClickBottom
+ * @param {Object} onClickLeft
+ * @param {Object} onClickRight
+ * @param {Object} onClickCenter
+ */
+function touchInit(canvas, isReadingMode, onClickTop, onClickBottom, onClickLeft, onClickRight, onClickCenter) {
 	console.log(canvas.width + ":" + canvas.height)
 	var style = {
 		fontColor: 'gray',
@@ -20,8 +30,16 @@ function touchInit(canvas, onClickTop, onClickBottom, onClickLeft, onClickRight,
 		_bottom_left: [temp1, canvas.height - temp2],
 		_bottom_right: [canvas.width - temp1, canvas.height - temp2],
 	}
+	var areas = {
+		top: [points.top_left, points.top_right, points._top_right, points._top_left],
+		left: [points.top_left, points.bottom_left, points._bottom_left, points._top_left],
+		right: [points.top_right, points.bottom_right, points._bottom_right, points._top_right],
+		bottom: [points.bottom_left, points.bottom_right, points._bottom_right, points._bottom_left],
+		center: [points._top_right, points._top_left, points._bottom_left, points._bottom_right],
+	}
 	var draw = function(area, selected) {
 		var ctx = canvas.getContext('2d');
+		var cText = canvas.getContext('2d');
 		ctx.beginPath();
 		for(var i in area) {
 			var point = area[i];
@@ -35,10 +53,9 @@ function touchInit(canvas, onClickTop, onClickBottom, onClickLeft, onClickRight,
 			ctx.fillStyle = style.backgroundColor;
 		}
 		ctx.fill();
-		var cText = canvas.getContext('2d');
-		var fontSize=30;
-		cText.font ="small-caps "+fontSize+"px arial,sans-serif";
-//		cText.fontSize="100px";
+		var fontSize = 30;
+		cText.font = "small-caps " + fontSize + "px arial,sans-serif";
+		//		cText.fontSize="100px";
 		if(selected) {
 			cText.fillStyle = style._fontColor;
 		} else {
@@ -49,46 +66,40 @@ function touchInit(canvas, onClickTop, onClickBottom, onClickLeft, onClickRight,
 			case areas.bottom:
 				{
 					name = "下一章";
-					cText.fillText(name, points.top_right[0]/2.0-name.length*fontSize/2.0, canvas.height-(points._top_right[1]/2-fontSize/2.0),points.top_right[0]/2);
+					cText.fillText(name, points.top_right[0] / 2.0 - name.length * fontSize / 2.0, canvas.height - (points._top_right[1] / 2 - fontSize / 2.0), points.top_right[0] / 2);
 				}
 				break;
 			case areas.top:
 				{
-					name = "上一章";					
-					cText.fillText(name, points.top_right[0]/2.0-name.length*fontSize/2.0, points._top_right[1]/2+fontSize/2,points.top_right[0]/2.0);
+					name = "上一章";
+					cText.fillText(name, points.top_right[0] / 2.0 - name.length * fontSize / 2.0, points._top_right[1] / 2 + fontSize / 2, points.top_right[0] / 2.0);
 
 				}
 				break;
 			case areas.right:
 				{
 					name = "下一頁";
-					cText.fillText(name, (canvas.width-canvas.width/8)-fontSize/2.0, canvas.height/2.0+fontSize/2.0,fontSize);
+					cText.fillText(name, (canvas.width - canvas.width / 8) - fontSize / 2.0, canvas.height / 2.0 + fontSize / 2.0, fontSize);
 
 				}
 				break;
 			case areas.left:
 				{
 					name = "上一頁";
-					cText.fillText(name, canvas.width/8-fontSize/2.0, canvas.height/2.0+fontSize/2.0,fontSize);
+					cText.fillText(name, canvas.width / 8 - fontSize / 2.0, canvas.height / 2.0 + fontSize / 2.0, fontSize);
 
 				}
 				break;
 			case areas.center:
 				{
 					name = "設置";
-					cText.fillText(name, canvas.width/2-name.length*fontSize/2.0, canvas.height/2.0+fontSize/2.0,name.length*fontSize);
+					cText.fillText(name, canvas.width / 2 - name.length * fontSize / 2.0, canvas.height / 2.0 + fontSize / 2.0, name.length * fontSize);
 				}
 				break;
 		}
-		
+
 	}
-	var areas = {
-		top: [points.top_left, points.top_right, points._top_right, points._top_left],
-		left: [points.top_left, points.bottom_left, points._bottom_left, points._top_left],
-		right: [points.top_right, points.bottom_right, points._bottom_right, points._top_right],
-		bottom: [points.bottom_left, points.bottom_right, points._bottom_right, points._bottom_left],
-		center: [points._top_right, points._top_left, points._bottom_left, points._bottom_right],
-	}
+	
 	/**
 	 * 获取点击的区域位置
 	 * @param {Object} x
@@ -115,14 +126,38 @@ function touchInit(canvas, onClickTop, onClickBottom, onClickLeft, onClickRight,
 		}
 	}
 	var tempArea;
-	canvas.addEventListener("mousedown", function(e) {
+	//	canvas.addEventListener("mousedown", function(e) {
+	//		tempArea = loadArea(e.clientX, e.clientY);
+	//		draw(tempArea, true);
+	//	});
+	//	canvas.addEventListener("mouseup", function(e) {
+	//		setTimeout(function(){
+	//			draw(tempArea, false);
+	//		},16);
+	//		if(tempArea == areas.center) {
+	//			console.log("click center area")
+	//		} else
+	//		if(tempArea == areas.left) {
+	//			console.log("click left area")
+	//		} else
+	//		if(tempArea == areas.right) {
+	//			console.log("click right area")
+	//		} else
+	//		if(tempArea == areas.top) {
+	//			console.log("click top area")
+	//		} else
+	//		if(tempArea == areas.bottom) {
+	//			console.log("click bottom area")
+	//		}
+	//	});
+	canvas.addEventListener("click", function(e) {
 		tempArea = loadArea(e.clientX, e.clientY);
-		draw(tempArea, true);
-	});
-	canvas.addEventListener("mouseup", function(e) {
-		setTimeout(function(){
-			draw(tempArea, false);
-		},16);
+//		draw(tempArea, true);
+//		draw(tempArea, false);
+
+		//		setTimeout(function() {
+		//			draw(tempArea, false);
+		//		}, 16);
 		if(tempArea == areas.center) {
 			console.log("click center area")
 		} else
@@ -139,53 +174,32 @@ function touchInit(canvas, onClickTop, onClickBottom, onClickLeft, onClickRight,
 			console.log("click bottom area")
 		}
 	});
-//	canvas.addEventListener("click", function(e) {
-//		tempArea = loadArea(e.clientX, e.clientY);
-//		draw(tempArea, true);
-//		setTimeout(function(){
-//			draw(tempArea, false);
-//		},16);
-//		if(tempArea == areas.center) {
-//			console.log("click center area")
-//		} else
-//		if(tempArea == areas.left) {
-//			console.log("click left area")
-//		} else
-//		if(tempArea == areas.right) {
-//			console.log("click right area")
-//		} else
-//		if(tempArea == areas.top) {
-//			console.log("click top area")
-//		} else
-//		if(tempArea == areas.bottom) {
-//			console.log("click bottom area")
-//		}
-//	});
-//	canvas.addEventListener("touchstart", function(e) {
-//		alert("touch is starting")
-//		tempArea = loadArea(e.touches[0].clientX, e.touches[0].clientY);
-//		draw(tempArea, true);
-//	});
-//	canvas.addEventListener("touchmove", function(e) {
-//	});
-//	canvas.addEventListener("touchend", function(e) {
-//		draw(tempArea, false);
-//		if(tempArea == areas.center) {
-//			console.log("click center area")
-//		} else
-//		if(tempArea == areas.left) {
-//			console.log("click left area")
-//		} else
-//		if(tempArea == areas.right) {
-//			console.log("click right area")
-//		} else
-//		if(tempArea == areas.top) {
-//			console.log("click top area")
-//		} else
-//		if(tempArea == areas.bottom) {
-//			console.log("click bottom area")
-//		}
-//	});
+	//	canvas.addEventListener("touchstart", function(e) {
+	//		alert("touch is starting")
+	//		tempArea = loadArea(e.touches[0].clientX, e.touches[0].clientY);
+	//		draw(tempArea, true);
+	//	});
+	//	canvas.addEventListener("touchmove", function(e) {
+	//	});
+	//	canvas.addEventListener("touchend", function(e) {
+	//		draw(tempArea, false);
+	//		if(tempArea == areas.center) {
+	//			console.log("click center area")
+	//		} else
+	//		if(tempArea == areas.left) {
+	//			console.log("click left area")
+	//		} else
+	//		if(tempArea == areas.right) {
+	//			console.log("click right area")
+	//		} else
+	//		if(tempArea == areas.top) {
+	//			console.log("click top area")
+	//		} else
+	//		if(tempArea == areas.bottom) {
+	//			console.log("click bottom area")
+	//		}
+	//	});
+	if(isReadingMode)return;
 	draw(areas.top, false);
 	draw(areas.bottom, false);
 	draw(areas.left, false);

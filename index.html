@@ -14,47 +14,61 @@
 			body {
 				margin: 0;
 				padding: 0;
-				overflow-wrap: inherit;
 				width: 100%;
+				height: 100%;
+				overflow: hidden;
 			}
-			.touchArea{
-				position:fixed;float: left;
+			
+			.toolbar {
+				width: 36px;
+				height: 100%;
+				background-color: lightcyan;
+				/*position: fixed;*/
+				/*float: left;*/
+				border-right-color: gray;
+				border-right-width: 1px;
+				border-right-style: solid;
+				float: left;
+			}
+			
+			.contentLayout {
+				background-color: white;
+				/*position: fixed;*/
+				overflow-wrap: break-word;
+				overflow-y: auto;
+			}
+			
+			.textAutoWrap{
+				margin: 10px;
+			}
+			
+			.pagerBar {
+				background-color: lightcyan;
+				/*position: fixed;*/
+				height: 36px;
+				/*float: right;*/
+				border-top-color: gray;
+				border-top-width: 1px;
+				border-top-style: solid;
 			}
 		</style>
 	</head>
 
 	<body>
-
-		<page style="position: absolute;">
-			<div id="output"></div>
-		</page>
-		<div class="touchArea">
-			<canvas id="myCanvas">your browser does not support the canvas tag </canvas>
+		<div style="height: 100%;">
+			<div class="toolbar"></div>
+			<div>
+				<div id="contentLayout" class="contentLayout"><span class="textAutoWrap">buttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbuttonbutton</span></div>
+				<div id="pagerBar" class="pagerBar">button</div>
+			</div>
 		</div>
 		<script>
-			//			document.addEventListener("",function(e){
-			//				
-			//			})
-			var _theme = {
-				backgroundColor: "white"
-			};
-
-			function onCreate() {
-				document.body.style.backgroundColor = _theme.backgroundColor;
-				document.body.style.height = "100%";
-				//				document.body.style.margin = "0px";
+			function initHomeLayout(){
+				
 			}
-			onCreate();
-			document.getElementById("output").innerHTML = "开始载入net数据<br>";
-			$.get("http://novel.juhe.im/categories", function(result) {
-//				console.log(JSON.stringify(result.data))
-//				$("#output").html(JSON.stringify(result.data) + JSON.stringify(result.data) + JSON.stringify(result.data) + JSON.stringify(result.data));
-			});
-			document.getElementById("myCanvas").height = document.documentElement.clientHeight;
-			document.getElementById("myCanvas").width = document.documentElement.clientWidth;
-			touchInit(document.getElementById("myCanvas"), null, null, null, null, null);
+			console.log(document.getElementById("pagerBar"))
+			document.getElementById("contentLayout").style.height=(document.documentElement.clientHeight-36)+"px";
 		</script>
-
 	</body>
 
 </html>

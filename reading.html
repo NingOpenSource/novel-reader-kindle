@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no">
+		<link rel="manifest" href="./manifest.json" />
+		<link rel="shortcut icon" href="./favicon.ico">
+		<title>a novel reader for kindle</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script type="text/javascript" src="js/touch.js"></script>
+		<style>
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+				width: 100%;
+			}
+			
+			.touchArea {
+				position: fixed;
+				float: left;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<page style="position: absolute;">
+			<div id="output"></div>
+		</page>
+		<div class="touchArea">
+			<canvas id="myCanvas">your browser does not support the canvas tag </canvas>
+		</div>
+		<script>
+			//			document.addEventListener("",function(e){
+			//				
+			//			})
+			var _theme = {
+				backgroundColor: "white"
+			};
+
+			function onCreate() {
+				document.body.style.backgroundColor = _theme.backgroundColor;
+				document.body.style.height = "100%";
+				//				document.body.style.margin = "0px";
+			}
+			onCreate();
+			document.getElementById("output").innerHTML = "开始载入net数据<br>";
+			$.get("http://novel.juhe.im/categories", function(result) {
+				console.log(JSON.stringify(result.data))
+				$("#output").html(JSON.stringify(result.data) + JSON.stringify(result.data) + JSON.stringify(result.data) + JSON.stringify(result.data));
+			});
+			document.getElementById("myCanvas").height = document.documentElement.clientHeight;
+			document.getElementById("myCanvas").width = document.documentElement.clientWidth;
+			touchInit(document.getElementById("myCanvas"), true, null, null, null, null, null);
+		</script>
+
+	</body>
+
+</html>
