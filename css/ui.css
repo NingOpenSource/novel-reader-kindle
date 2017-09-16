@@ -12,7 +12,7 @@ body {
 	/*position: fixed;*/
 	/*float: left;*/
 	border-right-color: gray;
-	border-right-width: 1px;
+	border-right-width: 0px;
 	border-right-style: solid;
 	float: left;
 }
