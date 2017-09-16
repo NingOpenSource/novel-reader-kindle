@@ -125,7 +125,7 @@ var navPages = [
 	})),
 	new NavPage("搜索", "img/bt_search.png", new NavPageAdapter({
 		onCreate: function(adapter) {
-			adapter.contentLayout=$('<div id="contentLayout" class="contentLayout"><div><input class="searchInputText" type="search" /></div><span class="textAutoWrap"></span></div>')[0];
+			adapter.contentLayout=$('<div id="contentLayout" class="contentLayout"><div class="searchBar"><input class="searchInputText" type="search" /><span class="searchButton">搜索</span></div><span class="textAutoWrap"></span></div>')[0];
 			adapter.pageBarLayout=$('<div id="pagerBarLayout" class="pagerBar"><div><a href="#" style="padding-left:1rem;padding-right:1rem;">上一页</a><span style="padding-left:1rem;padding-right:1rem;">1/1</span><a href="#" style="padding-left:1rem;padding-right:1rem;">下一页</a></div></div>')[0];
 			adapter.render.appendChild(adapter.contentLayout);
 			adapter.render.appendChild(adapter.pageBarLayout);		
