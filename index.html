@@ -9,7 +9,7 @@
 		<title>a novel reader for kindle</title>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script type="text/javascript" src="js/touch.js"></script>
-		<script type="text/javascript" src="js/ui.js" ></script>
+		<script type="text/javascript" src="js/ui.js"></script>
 		<style>
 			html,
 			body {
@@ -49,7 +49,8 @@
 				background-color: lightcyan;
 				/*position: fixed;*/
 				/*float: right;*/
-				font-size: 3rem;
+				min-height: 3rem;
+				font-size: 1rem;
 				border-top-color: gray;
 				border-top-width: 1px;
 				border-top-style: solid;
@@ -65,6 +66,7 @@
 			.bt_icon:active {
 				background: white;
 			}
+			
 			.bt_icon_selected {
 				background: white;
 			}
@@ -81,13 +83,13 @@
 				<img onclick="console.log('saas')" class="bt_icon" src="img/bt_search.png" />
 				<img onclick="console.log('saas')" class="bt_icon" src="img/bt_setting.png" />-->
 			</div>
-			<div>
+			<div id="pageLayout">
 				<div id="contentLayout" class="contentLayout"><span class="textAutoWrap">
 					button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button 
 									button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button button 
 
 				</span></div>
-				<div id="pagerBar" class="pagerBar"><span>button 页数分页器</span></div>
+				<div id="pagerBar" class="pagerBar"><span id="pageBarContent"></span></div>
 			</div>
 		</div>
 		<script>
@@ -95,8 +97,9 @@
 
 			}
 			document.getElementById("contentLayout").style.height = (document.documentElement.clientHeight - document.getElementById("pagerBar").offsetHeight) + "px";
-			ui.initNavBar(document.getElementById("navBar"))
-</script>
+			ui.initNavBar(document.getElementById("navBar"),document.getElementById("pageLayout"));
+			
+		</script>
 	</body>
 
 </html>
