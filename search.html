@@ -7,16 +7,13 @@
 		<link rel="manifest" href="./manifest.json" />
 		<link rel="shortcut icon" href="./favicon.ico">
 		<title>搜索书籍</title>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<script type="text/javascript" src="js/touch.js"></script>
-		<script type="text/javascript" src="js/ui.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/ui.css" />
 	</head>
 
 	<body
-		style="background: lightgray;">
+		style="background: lightgray;overflow: hidden;">
 		<div>
-			<form action="bookList.html" style="text-align: center;overflow: hidden;">
+			<form action="bookList.html" style="text-align: center;">
 				<input type="hidden" name="action" value="search" />
 				<input type="search" name="keywords" style="width: 95%;font-size: 2rem;padding: 0.5rem;margin-top: 2rem;" /><br>
 				<input type="submit" value="搜索书名" style="font-size: 2rem;padding: 0.5rem;border-radius: 0;margin-top: 2rem;" />

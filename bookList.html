@@ -1,21 +1,55 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>  
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<link rel="manifest" href="./manifest.json" />
 		<link rel="shortcut icon" href="./favicon.ico">
 		<title>a novel reader for kindle</title>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script type="text/javascript" src="js/touch.js"></script>
 		<script type="text/javascript" src="js/ui.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/ui.css"/>
+		<link rel="stylesheet" type="text/css" href="css/ui.css" />
+		<script type="text/javascript" src="js/api.js"></script>
+		<script type="text/javascript" src="js/utils.js"></script>
 	</head>
+
 	<body>
-		<div>
-			書記列表
-			
-			
+		<div id="pageLayout" style="width: 100%;">
+
 		</div>
+		<script>
+			document.getElementById("pageLayout").style.height = document.documentElement.clientHeight + "px";
+			/**
+			 * 元素创建器
+			 * @param {Object} name
+			 * @param {Object} cover
+			 * @param {Object} intro
+			 * @param {Object} author
+			 * @param {Object} star
+			 * @param {Object} hot
+			 */
+			var itemCreator = function(id, name, cover, intro, author, star, hot) {
+				cover = "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2086032991,814128441&fm=200&gp=0.jpg";
+				return $("<div style='padding: 10px;border-bottom-color: black;border-bottom-style: solid;border-bottom-width: 1px;display: -webkit-inline-box'><img src='" + cover + "' style='height:80px;width:60px;margin-right:10px;'/><div style=''><div><b>" + name + "</b></div><div style='padding-top: 5px;padding-bottom: 8px;'><span style='color: gray;'>" + author + "</span>&nbsp;|&nbsp;<span style='color: gray;'>" +
+					renderNumber(star) + "人气</span></div><div style='color:gray;width:"+(document.documentElement.clientWidth-130)+"px ;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;word-break: break-word;padding-right: 4rem;'>"+intro+"</div></div></div>")[0];
+			}
+
+			switch(getQueryString("action")) {
+				case "search":
+					{
+						new api(function(res, status) {
+							console.log(res);
+							for(var i in res.data.books) {
+								var data = res.data.books[i];
+								document.getElementById("pageLayout").appendChild(itemCreator(data._id, data.title, data.cover, data.shortIntro, data.author, data.latelyFollower, ))
+							}
+						}).search(getQueryString("keywords"));
+					}
+					break;
+			}
+		</script>
 	</body>
+
 </html>
